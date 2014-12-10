@@ -1,0 +1,10 @@
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\bin\Debug\Repository.Core.dll.config
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\bin\Debug\Repository.Core.dll
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\bin\Debug\Repository.Core.pdb
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\bin\Debug\EntityFramework.dll
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\bin\Debug\EntityFramework.xml
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\obj\Debug\Repository.Core.csprojResolveAssemblyReference.cache
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\obj\Debug\Repository.Core.dll
+C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\Repository.Core\obj\Debug\Repository.Core.pdb

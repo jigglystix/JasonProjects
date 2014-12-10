@@ -48,17 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterObj.cs" />
-    <Compile Include="ClassObj.cs" />
-    <Compile Include="GameDBContext.cs" />
-    <Compile Include="InventoryObj.cs" />
-    <Compile Include="ItemObj.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RaceObj.cs" />
-    <Compile Include="StandardDBFields.cs" />
-    <Compile Include="StatsObj.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
