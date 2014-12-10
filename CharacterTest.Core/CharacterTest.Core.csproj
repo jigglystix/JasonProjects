@@ -49,6 +49,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DataAccess\ClassService.cs" />
     <Compile Include="DataAccess\GameDBContext.cs" />
+    <Compile Include="DataAccess\ItemService.cs" />
     <Compile Include="DataAccess\RaceService.cs" />
     <Compile Include="Models\CharacterObj.cs" />
     <Compile Include="Models\ClassObj.cs" />

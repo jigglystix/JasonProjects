@@ -12,9 +12,7 @@ namespace CharacterTest.Core.DataAccess
     {
         private readonly DbContext _context;
         private readonly IGenericRepository<RaceObj> _raceRepo;
-
         
-
         public RaceService(DbContext context) 
         {
             _context = context;
