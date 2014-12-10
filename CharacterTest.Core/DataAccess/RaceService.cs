@@ -13,11 +13,21 @@ namespace CharacterTest.Core.DataAccess
         private readonly DbContext _context;
         private readonly IGenericRepository<RaceObj> _raceRepo;
 
+        
 
-
-        public RaceService() 
+        public RaceService(DbContext context) 
         {
+            _context = context;
             _raceRepo = new GenericRepository<RaceObj>(_context);
+        }
+
+        public void Insert(RaceObj raceAdd)
+        {
+            if (raceAdd != null)
+            {
+                _raceRepo.Insert(raceAdd);
+                _context.SaveChanges();
+            }
         }
     }
 }
