@@ -56,6 +56,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CharacterTest.Core\CharacterTest.Core.csproj">
+      <Project>{f4932706-e699-41e4-b9cb-5dccbb048fb9}</Project>
+      <Name>CharacterTest.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository.Core\Repository.Core.csproj">
+      <Project>{95bdbb92-59fc-4d1f-b92e-3ad494e85802}</Project>
+      <Name>Repository.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,38 +4,46 @@ namespace CharacterTest.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using CharacterTest.Core;
+    using CharacterTest.Core.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CharacterTest.GameDBContext>
     {
+        RaceObj race = new RaceObj();
+        ClassObj cla = new ClassObj();
+
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(CharacterTest.GameDBContext context)
+        protected override void Seed(GameDBContext context)
         {
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
             context.RaceObjects.AddOrUpdate(
                 r => r.Name,
                 new RaceObj
                 {
-                    Name = "Elf",
-                    STRENGTH = 10,
-                    AGILITY = 15,
-                    VITALITY = 10,
-                    INTELLIGENCE = 20,
-                    DEXTERITY = 15,
+                    Name = race.Name,
+                    STRENGTH = race.STRENGTH,
+                    AGILITY = race.AGILITY,
+                    VITALITY = race.VITALITY,
+                    INTELLIGENCE = race.INTELLIGENCE,
+                    DEXTERITY = race.DEXTERITY,
+                    CreatedUtc = DateTime.UtcNow,
+                    CreatedBy = "seed"
+                });
+
+            context.ClassObjects.AddOrUpdate(
+                c => c.Name,
+                new ClassObj
+                {
+                    Name = cla.Name,
+                    STRModifier = cla.STRModifier,
+                    AGIModifier = cla.AGIModifier,
+                    VITModifier = cla.VITModifier,
+                    INTModifier = cla.INTModifier,
+                    DEXModifier = cla.DEXModifier,
                     CreatedUtc = DateTime.UtcNow,
                     CreatedBy = "seed"
                 });

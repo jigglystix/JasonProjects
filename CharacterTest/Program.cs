@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CharacterTest.Core;
+using Repository.Core;
+using CharacterTest.Core.Models;
 
 namespace CharacterTest
 {
-    class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
+            
             CharacterObj ch = new CharacterObj();
-            //ch.CharacterClass.Name;
-            //ch.CharacterRace.Name;
-            //ch.Name;
             RaceObj r = new RaceObj();
             ClassObj c = new ClassObj();
             StatsObj t = new StatsObj();
+            t.ClassObject = c;
+            t.RaceObject = r;
+            /* ch.CharacterClass.Name;
+            ch.CharacterRace.Name;
+            ch.Name; 
             Random diceroll = new Random();
             r.STRENGTH = diceroll.Next(8, 12);
             r.AGILITY = diceroll.Next(8, 12);
@@ -27,9 +33,7 @@ namespace CharacterTest
             c.AGIModifier = diceroll.Next(0, 5);
             c.INTModifier = diceroll.Next(0, 5);
             c.DEXModifier = diceroll.Next(0, 5);
-            c.VITModifier = diceroll.Next(0, 5);
-            t.ClassObject = c;
-            t.RaceObject = r;
+            c.VITModifier = diceroll.Next(0, 5); */
 
                         
             Console.WriteLine("Once upon a time, in a far away land full of magic and swords...");
