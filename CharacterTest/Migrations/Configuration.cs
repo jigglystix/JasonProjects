@@ -9,18 +9,23 @@ namespace CharacterTest.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<CharacterTest.GameDBContext>
     {
+        #region Declarations
         RaceObj race = new RaceObj();
         ClassObj cla = new ClassObj();
+        #endregion
 
+        #region Constructor
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
+        #endregion
 
+        #region Seed
         protected override void Seed(GameDBContext context)
         {
 
-            context.RaceObjects.AddOrUpdate(
+            /* context.RaceObjects.AddOrUpdate(
                 r => r.Name,
                 new RaceObj
                 {
@@ -46,7 +51,8 @@ namespace CharacterTest.Migrations
                     DEXModifier = cla.DEXModifier,
                     CreatedUtc = DateTime.UtcNow,
                     CreatedBy = "seed"
-                });
+                }); */
         }
+        #endregion
     }
 }

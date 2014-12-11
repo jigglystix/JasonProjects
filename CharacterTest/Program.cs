@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using CharacterTest.Core;
 using Repository.Core;
 using CharacterTest.Core.Models;
+using CharacterTest.Core.DataAccess;
+using System.Data.Entity;
 
 namespace CharacterTest
 {
@@ -13,29 +15,26 @@ namespace CharacterTest
     {
         public static void Main(string[] args)
         {
-            
+
+            #region Declarations
+            DbContext context1 = new GameDBContext();
             CharacterObj ch = new CharacterObj();
             RaceObj r = new RaceObj();
             ClassObj c = new ClassObj();
             StatsObj t = new StatsObj();
             t.ClassObject = c;
             t.RaceObject = r;
-            /* ch.CharacterClass.Name;
-            ch.CharacterRace.Name;
-            ch.Name; 
-            Random diceroll = new Random();
-            r.STRENGTH = diceroll.Next(8, 12);
-            r.AGILITY = diceroll.Next(8, 12);
-            r.INTELLIGENCE = diceroll.Next(8, 12);
-            r.DEXTERITY = diceroll.Next(8, 12);
-            r.VITALITY = diceroll.Next(8, 12);
-            c.STRModifier = diceroll.Next(0, 5);
-            c.AGIModifier = diceroll.Next(0, 5);
-            c.INTModifier = diceroll.Next(0, 5);
-            c.DEXModifier = diceroll.Next(0, 5);
-            c.VITModifier = diceroll.Next(0, 5); */
+            RaceService rserv = new RaceService(context1);
+            ClassService cserv = new ClassService(context1);
+            // call at end
+            // rserv.Insert(r);
+            #endregion
 
-                        
+            #region RaceList
+            
+            #endregion
+
+            #region ToBeRewritten
             Console.WriteLine("Once upon a time, in a far away land full of magic and swords...");
             Console.WriteLine("...Ah man screw that crap, this about kicking some ass and taking names!");
             Console.WriteLine("But first, tell me your name.");
@@ -46,11 +45,11 @@ namespace CharacterTest
             Console.WriteLine("Screw it, you shall be Sir " + name + " of Bad-Assitude");
             Console.WriteLine("\nNow then, tell me son, what is your race of choice?");
             r.Name = Console.ReadLine();
+
             Console.WriteLine("....A WHAT? The hell is a " + r.Name + "?! Whatever, your fantasy dude.");
             Console.WriteLine("\r\n\nPress any key to continue...");
             Console.ReadKey();
             Console.Clear();
-
             
             Console.WriteLine("NOW WHAT JOB DO YOU WANT TO BE WHEN YOU GROW UP!?");
             c.Name = Console.ReadLine();
@@ -135,6 +134,7 @@ namespace CharacterTest
             Console.WriteLine("ARE YOU READY TO PLAY?! GOOD!!");
             Console.WriteLine("\r\nEnd Game -- For now...");
             Console.ReadKey();
+            #endregion
         }
     }
 }
