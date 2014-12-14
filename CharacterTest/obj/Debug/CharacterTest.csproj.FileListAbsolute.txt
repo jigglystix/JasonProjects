@@ -8,3 +8,7 @@ C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\CharacterT
 C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\CharacterTest\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\CharacterTest\bin\Debug\EntityFramework.xml
 C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\CharacterTest\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest\bin\Debug\CharacterTest.Core.dll
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest\bin\Debug\Repository.Core.dll
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest\bin\Debug\CharacterTest.Core.pdb
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest\bin\Debug\Repository.Core.pdb

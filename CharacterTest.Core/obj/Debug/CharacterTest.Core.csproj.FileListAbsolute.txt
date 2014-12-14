@@ -1,1 +1,12 @@
 C:\Users\jsimpson\documents\visual studio 2013\Projects\CharacterTest\CharacterTest.Core\obj\Debug\CharacterTest.Core.csprojResolveAssemblyReference.cache
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\CharacterTest.Core.dll.config
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\CharacterTest.Core.dll
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\CharacterTest.Core.pdb
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\EntityFramework.dll
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\Repository.Core.dll
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\Repository.Core.pdb
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\EntityFramework.xml
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\obj\Debug\CharacterTest.Core.dll
+C:\Users\jsimpson\Documents\Visual Studio 2013\Projects\CharacterTest\CharacterTest.Core\obj\Debug\CharacterTest.Core.pdb
