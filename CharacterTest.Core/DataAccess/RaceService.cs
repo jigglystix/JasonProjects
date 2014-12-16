@@ -27,5 +27,6 @@ namespace CharacterTest.Core.DataAccess
                 _context.SaveChanges();
             }
         }
+        
     }
 }

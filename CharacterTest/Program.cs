@@ -176,7 +176,22 @@ namespace CharacterTest
             Console.Clear();
 
             // Submit race item
-            // rserv.Insert(r);
+            r.CreatedUtc = DateTime.Now;
+            r.CreatedBy = "Seed";
+            rserv.Insert(r);
+            /* Try Catch Block
+            try
+            {
+                rserv.Insert(r);
+            }
+            catch(Exception ex)
+            {
+                string test = "test";
+            }
+            finally
+            {
+
+            } */
             #endregion
 
             #region ClassCreation
@@ -291,7 +306,9 @@ namespace CharacterTest
             Console.Clear();
 
             // Submit Class Item
-            // cserv.Insert(c);
+            r.CreatedUtc = DateTime.Now;
+            r.CreatedBy = "Seed";
+            cserv.Insert(c);
             #endregion
 
             #region SpitOutStats
