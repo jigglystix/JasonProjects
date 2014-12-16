@@ -1,6 +1,6 @@
 *.suo
-*obj/
-*[Bb]in/
+*/obj/
+*/[Bb]in/
 
 #ignore thumbnails created by windows
 Thumbs.db
