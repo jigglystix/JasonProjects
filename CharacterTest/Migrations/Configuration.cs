@@ -25,7 +25,7 @@ namespace CharacterTest.Migrations
         protected override void Seed(GameDBContext context)
         {
 
-            /* context.RaceObjects.AddOrUpdate(
+            context.RaceObjects.AddOrUpdate(
                 r => r.Name,
                 new RaceObj
                 {
@@ -51,7 +51,7 @@ namespace CharacterTest.Migrations
                     DEXModifier = cla.DEXModifier,
                     CreatedUtc = DateTime.UtcNow,
                     CreatedBy = "seed"
-                }); */
+                });
         }
         #endregion
     }
