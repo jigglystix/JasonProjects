@@ -31,8 +31,9 @@ namespace CharacterTest
             RaceObj r = RaceCreationMenu();
             r = ModifyRaceStats(r, 3);
             t.RaceObject = r;
+            
 
-            ClassObj c = ClassCreationMenu(r);
+            ClassObj c = ClassCreationMenu(r.Name);
             c = ModifyClassStats(c, 8);
             t.ClassObject = c;
 
@@ -42,6 +43,7 @@ namespace CharacterTest
             #region SQL related artifacts
             // Submit race item
             rserv.Insert(r);
+            rserv.SelectByDate(DateTime.Now);
 
             // Submit class item
             cserv.Insert(c);
@@ -60,9 +62,7 @@ namespace CharacterTest
 
             Console.WriteLine("Seriously? Your name is " + name + "? What kind of f***ing name is that?");
             Console.WriteLine("Screw it, you shall be Sir " + name + " of Bad-Assitude");
-            Console.WriteLine("\r\n\nPress any key to continue...");
-            Console.ReadKey();
-            Console.Clear();
+            WaitAndClear();
             return name;
         }
         #endregion
@@ -171,14 +171,14 @@ namespace CharacterTest
             }
 
             ShowStats("Your new stats are as follows:", r);
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(1000);
             WaitAndClear();
             return r;
         }
         #endregion
 
         #region Class Related Functions
-        private static ClassObj ClassCreationMenu(RaceObj r)
+        private static ClassObj ClassCreationMenu(string name)
         {
             ClassObj c = new ClassObj();
             bool isValidClass = true;
@@ -191,7 +191,7 @@ namespace CharacterTest
 
             while (isValidClass)
             {
-                Console.WriteLine("PICK ONE OF THESE LOVELY JOBS YOU DIRTY " + r.Name);
+                Console.WriteLine("PICK ONE OF THESE LOVELY JOBS YOU DIRTY " + name);
                 Console.WriteLine("1. WARRIOR!");
                 Console.WriteLine("2. Mage!");
                 Console.WriteLine("3. Thief...");
@@ -273,7 +273,7 @@ namespace CharacterTest
                 }
             }
 
-            ShowStats("Your chosen stats are as follows:", c.STRModifier, c.AGIModifier, c.VITModifier, c.INTModifier, c.DEXModifier);
+            ShowStats("Your chosen stats are as follows:", c);
             System.Threading.Thread.Sleep(2000);
             WaitAndClear();
             return c;

@@ -24,7 +24,12 @@ namespace CharacterTest.Migrations
         #region Seed
         protected override void Seed(GameDBContext context)
         {
-
+            //PopulateInitialItems(context);
+            //PopulateInitialRaces();
+            //PopulatedInitialClasses();
+            CustomSeedFunction csf = new CustomSeedFunction();
+            csf.PopulatedInitialClasses();
+            /*
             context.RaceObjects.AddOrUpdate(
                 r => r.Name,
                 new RaceObj
@@ -37,7 +42,7 @@ namespace CharacterTest.Migrations
                     DEXTERITY = race.DEXTERITY,
                     CreatedUtc = DateTime.UtcNow,
                     CreatedBy = "seed"
-                });
+                });*/
 
             context.ClassObjects.AddOrUpdate(
                 c => c.Name,
@@ -54,5 +59,18 @@ namespace CharacterTest.Migrations
                 });
         }
         #endregion
+
+        private void PopulatedInitialClasses()
+        {
+
+        }
+    }
+
+    public class CustomSeedFunction
+    {
+        public void PopulatedInitialClasses()
+        {
+
+        }
     }
 }

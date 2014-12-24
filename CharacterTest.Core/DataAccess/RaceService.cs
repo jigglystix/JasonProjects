@@ -27,6 +27,11 @@ namespace CharacterTest.Core.DataAccess
                 _context.SaveChanges();
             }
         }
+
+        public IList<RaceObj> SelectByDate(DateTime filterDate)
+        {
+            return _raceRepo.Table.Where(x => x.CreatedUtc <= filterDate).ToList();
+        }
         
     }
 }
