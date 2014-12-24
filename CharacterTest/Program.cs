@@ -13,78 +13,43 @@ namespace CharacterTest
 {
     public class Program
     {
+        #region Main Story
         public static void Main(string[] args)
         {
 
             #region Declarations
             DbContext context1 = new GameDBContext();
             RaceService rserv = new RaceService(context1);
-            
-            
-            StatsObj t = new StatsObj();
-            CharacterObj ch = new CharacterObj();
-            ClassObj c = new ClassObj();
             ClassService cserv = new ClassService(context1);
-            
-            var reclass = true;
-            int restatc = 0;
-            t.ClassObject = c;
-            
-            
+            CharacterObj ch = new CharacterObj();
+            StatsObj t = new StatsObj();
             #endregion
 
-
+            #region Call to Story Chunks
             string charName = BeginningMenu();
 
             RaceObj r = RaceCreationMenu();
-            RaceObj moddedR = ModifyRaceStats(r, 3);
-            t.RaceObject = moddedR;
-            // Submit race item
-            rserv.Insert(moddedR);
-            #region Example Try Catch Block
-            /* Try Catch Block
-            try
-            {
-                rserv.Insert(r);
-            }
-            catch(Exception ex)
-            {
-                string test = "test";
-            }
-            finally
-            {
+            r = ModifyRaceStats(r, 3);
+            t.RaceObject = r;
 
-            } */
+            ClassObj c = ClassCreationMenu(r);
+            c = ModifyClassStats(c, 8);
+            t.ClassObject = c;
+
+            t = StatViewingMenu(t.STRENGTH, t.AGILITY, t.VITALITY, t.INTELLIGENCE, t.DEXTERITY);
             #endregion
 
-            ClassCreationMenu();
+            #region SQL related artifacts
+            // Submit race item
+            rserv.Insert(r);
 
-            #region SpitOutStats
-            Console.WriteLine("Now that we have SOMETHING to work with here,");
-            Console.WriteLine("let's see your total stats shall we?");
-            Console.WriteLine("\r\n\nPress any key to continue...");
-            Console.ReadKey();
-            Console.Clear();
-
-            Console.WriteLine("Strength is a whopping " + t.STRENGTH);
-            System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("Your swift agility is " + t.AGILITY);
-            System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("Your healthy vitality is " + t.VITALITY);
-            System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("Your sharp intelligence is " + t.INTELLIGENCE);
-            System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("And dexterity comes out to " + t.DEXTERITY);
-            System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("\r\n\nPress any key to continue...");
-            Console.ReadKey();
-            Console.Clear();
-
-            Console.WriteLine("The End....for now");
-            Console.ReadKey();
+            // Submit class item
+            cserv.Insert(c);
             #endregion
         }
+        #endregion
 
+        #region Beginning of Chaos
         private static string BeginningMenu()
         {
             Console.WriteLine("Once upon a time, in a far away land full of magic and swords...");
@@ -100,6 +65,7 @@ namespace CharacterTest
             Console.Clear();
             return name;
         }
+        #endregion
 
         #region Race Related Functions
         private static RaceObj RaceCreationMenu()
@@ -211,15 +177,19 @@ namespace CharacterTest
         }
         #endregion
 
-        private static void ClassCreationMenu()
+        #region Class Related Functions
+        private static ClassObj ClassCreationMenu(RaceObj r)
         {
+            ClassObj c = new ClassObj();
+            bool isValidClass = true;
+            c.CreatedUtc = DateTime.Now;
+            c.CreatedBy = "Seed";
+
             Console.WriteLine("Now that we got that dreaded long-winded race building out of the way...");
             Console.WriteLine("NOW COMES THE TIME....the time for a job. A class per say.");
-            Console.WriteLine("\r\n\nPress any key to continue...");
-            Console.ReadKey();
-            Console.Clear();
+            WaitAndClear();
 
-            while (reclass)
+            while (isValidClass)
             {
                 Console.WriteLine("PICK ONE OF THESE LOVELY JOBS YOU DIRTY " + r.Name);
                 Console.WriteLine("1. WARRIOR!");
@@ -227,53 +197,44 @@ namespace CharacterTest
                 Console.WriteLine("3. Thief...");
                 Console.WriteLine("4. Archer");
                 string z = Console.ReadLine();
-                reclass = false;
+                isValidClass = false;
                 switch (z)
                 {
                     case "1":
                         Console.WriteLine("\r\nBrave choice! You have chosen the warrior!");
                         c.Name = "Warrior";
-                        Console.WriteLine("\r\n\nPress any key to continue...");
-                        Console.ReadKey();
-                        Console.Clear();
                         break;
                     case "2":
                         Console.WriteLine("\r\nI can smell great magicks inside you!");
                         c.Name = "Mage";
-                        Console.WriteLine("\r\n\nPress any key to continue...");
-                        Console.ReadKey();
-                        Console.Clear();
                         break;
                     case "3":
                         Console.WriteLine("\r\nI got knicked by a thief once. Was that you?!");
                         c.Name = "Thief";
-                        Console.WriteLine("\r\n\nPress any key to continue...");
-                        Console.ReadKey();
-                        Console.Clear();
                         break;
                     case "4":
                         Console.WriteLine("\r\nAn archer? Pfft, scaredy cat.");
                         c.Name = "Archer";
-                        Console.WriteLine("\r\n\nPress any key to continue...");
-                        Console.ReadKey();
-                        Console.Clear();
                         break;
                     default:
                         Console.WriteLine("\r\nYou chose none of the options provided. TRY AGAIN IMBECILE!");
-                        Console.WriteLine("\r\n\nPress any key to continue...");
-                        reclass = true;
-                        Console.ReadKey();
-                        Console.Clear();
+                        isValidClass = true;
                         break;
                 }
+                WaitAndClear();
             }
+            return c;
+        }
+
+        private static ClassObj ModifyClassStats(ClassObj c, int statPoints)
+        {
             Console.WriteLine("Your class choice has given you 8 stat points available to assign.");
             Console.WriteLine("DECIDE WISELY!");
 
-            while (restatc <= 7)
+            int remainingPoints = statPoints;
+            while (remainingPoints > 0)
             {
-                int stattot2 = 8 - restatc;
-                Console.WriteLine("You have " + stattot2 + " points left to choose from.");
+                Console.WriteLine("You have " + remainingPoints + " points left to choose from.");
                 Console.WriteLine("1. Strength");
                 Console.WriteLine("2. Agility");
                 Console.WriteLine("3. Vitality");
@@ -284,27 +245,27 @@ namespace CharacterTest
                 {
                     case "1":
                         c.STRModifier++;
-                        restatc++;
+                        remainingPoints--;
                         Console.Clear();
                         break;
                     case "2":
                         c.AGIModifier++;
-                        restatc++;
+                        remainingPoints--;
                         Console.Clear();
                         break;
                     case "3":
                         c.VITModifier++;
-                        restatc++;
+                        remainingPoints--;
                         Console.Clear();
                         break;
                     case "4":
                         c.INTModifier++;
-                        restatc++;
+                        remainingPoints--;
                         Console.Clear();
                         break;
                     case "5":
                         c.DEXModifier++;
-                        restatc++;
+                        remainingPoints--;
                         Console.Clear();
                         break;
                     default:
@@ -314,16 +275,38 @@ namespace CharacterTest
 
             ShowStats("Your chosen stats are as follows:", c.STRModifier, c.AGIModifier, c.VITModifier, c.INTModifier, c.DEXModifier);
             System.Threading.Thread.Sleep(2000);
-            Console.WriteLine("\r\n\nPress any key to continue...");
-            Console.ReadKey();
-            Console.Clear();
-
-            // Submit Class Item
-            c.CreatedUtc = DateTime.Now;
-            c.CreatedBy = "Seed";
-            cserv.Insert(c);
+            WaitAndClear();
+            return c;
         }
+        #endregion
 
+        #region Stat Related Function
+        private static StatsObj StatViewingMenu(int strength, int agility, int vitality, int intelligence, int dexterity)
+        {
+            StatsObj t = new StatsObj();
+            Console.WriteLine("Now that we have SOMETHING to work with here,");
+            Console.WriteLine("let's see your total stats shall we?");
+            WaitAndClear();
+
+            Console.WriteLine("Strength is a whopping " + strength);
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("Your swift agility is " + agility);
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("Your healthy vitality is " + vitality);
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("Your sharp intelligence is " + intelligence);
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("And dexterity comes out to " + dexterity);
+            System.Threading.Thread.Sleep(1000);
+            WaitAndClear();
+
+            Console.WriteLine("The End....for now");
+            WaitAndClear();
+            return t;
+        }
+        #endregion
+
+        #region Core Functions
         private static void ShowStats(string headerText, int strength, int agility, int vitality, int intelligence, int dexterity)
         {
             Console.WriteLine(headerText);
@@ -339,11 +322,17 @@ namespace CharacterTest
             ShowStats(headerText, r.STRENGTH, r.AGILITY, r.VITALITY, r.INTELLIGENCE, r.DEXTERITY);
         }
 
+        private static void ShowStats(string headerText, ClassObj c)
+        {
+            ShowStats(headerText, c.STRModifier, c.AGIModifier, c.VITModifier, c.INTModifier, c.DEXModifier);
+        }
+
         private static void WaitAndClear()
         {
             Console.WriteLine("\r\n\nPress any key to continue...");
             Console.ReadKey();
             Console.Clear();
         }
+        #endregion
     }
 }
