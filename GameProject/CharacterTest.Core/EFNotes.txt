@@ -1,0 +1,6 @@
+﻿In the Package Manager Console, I typed 'Install-package EntityFramework'
+Created Database "JasonsGame" in sql server
+Added Data Initializer object
+Added EntityFrameworks/Contexts section to the app.config
+Added connectionstring to the app.config
+Type "Enable-Migrations" in the package manager colsole
