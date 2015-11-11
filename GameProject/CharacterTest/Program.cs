@@ -97,7 +97,7 @@ namespace CharacterTest
                 {
                     case "1":
                         Console.WriteLine("\r\nYou have chosen to be a human! The most average of all classes....BORING!");
-                        r.Name = "Human";
+                        r.Name = "Humans";
                         break;
                     case "2":
                         Console.WriteLine("\r\nYou have chosen to be an orc! Ugly bastards...");
