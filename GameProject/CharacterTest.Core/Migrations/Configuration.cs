@@ -1,3 +1,5 @@
+using CharacterTest.Core.DataAccess;
+
 namespace CharacterTest.Core.Migrations
 {
     using System;
@@ -14,18 +16,29 @@ namespace CharacterTest.Core.Migrations
 
         protected override void Seed(CharacterTest.GameDBContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            AddRaces(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        public void AddRaces(GameDBContext context)
+        {
+            AddOneRace(context, 1, "Human", 7, 7, 7, 7, 7);
+        }
+
+        public void AddOneRace(GameDBContext context, int id, string name, int strength, int agility, int vitality, int dexterity,
+            int intelligence)
+        {
+            var raceService = new RaceService(context);
+            raceService.Insert(new RaceObj()
+            {
+                Id = id,
+                Name = name,
+                STRENGTH = strength,
+                AGILITY = agility,
+                VITALITY = vitality,
+                DEXTERITY = dexterity,
+                INTELLIGENCE = intelligence,
+                CreatedUtc = DateTime.UtcNow
+            });
         }
     }
 }
